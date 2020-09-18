@@ -5,16 +5,16 @@ project(llvm-tutor)
 # 1. VERIFY LLVM INSTALLATION DIR
 #===============================================================================
 # Set this to a valid LLVM installation dir
-set(LT_LLVM_INSTALL_DIR "" CACHE PATH "LLVM installation directory")
+set(LT_LLVM_INSTALL_DIR "/usr" CACHE PATH "LLVM installation directory")
 
 # A bit of a sanity checking
-set(LT_LLVM_INCLUDE_DIR "${LT_LLVM_INSTALL_DIR}/include/llvm")
+set(LT_LLVM_INCLUDE_DIR "/usr/include/llvm-10")
 if(NOT EXISTS "${LT_LLVM_INCLUDE_DIR}")
 message(FATAL_ERROR
   " LT_LLVM_INSTALL_DIR (${LT_LLVM_INCLUDE_DIR}) is invalid.")
 endif()
 
-set(LT_LLVM_CMAKE_FILE "${LT_LLVM_INSTALL_DIR}/lib/cmake/llvm/LLVMConfig.cmake")
+set(LT_LLVM_CMAKE_FILE "/usr/lib/llvm-10/lib/cmake/llvm/LLVMConfig.cmake")
 if(NOT EXISTS "${LT_LLVM_CMAKE_FILE}")
 message(FATAL_ERROR
     " LT_LLVM_CMAKE_FILE (${LT_LLVM_CMAKE_FILE}) is invalid.")
@@ -26,11 +26,11 @@ endif()
 #===============================================================================
 # Add the location of LLVMConfig.cmake to CMake search paths (so that
 # find_package can locate it)
-list(APPEND CMAKE_PREFIX_PATH "${LT_LLVM_INSTALL_DIR}/lib/cmake/llvm/")
+list(APPEND CMAKE_PREFIX_PATH "/usr/lib/cmake/llvm-10/")
 
 find_package(LLVM 10.0.0 REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
-message(STATUS "Using LLVMConfig.cmake in: ${LT_LLVM_INSTALL_DIR}")
+message(STATUS "Using LLVMConfig.cmake in: /usr")
 
 message("LLVM STATUS:
   Definitions ${LLVM_DEFINITIONS}

@@ -82,6 +82,7 @@ bool InjectFuncCall::runOnModule(Module &M) {
   // STEP 3: For each function in the module, inject a call to printf
   // ----------------------------------------------------------------
   for (auto &F : M) {
+
     if (F.isDeclaration())
       continue;
 

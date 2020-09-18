@@ -7,6 +7,11 @@
 //
 // License: MIT
 //=============================================================================
+
+void passByRef(int* inp){
+  *inp = 2;
+}
+
 int foo(int a) {
   return a * 2;
 }
@@ -21,6 +26,7 @@ int fez(int a, int b, int c) {
 
 int main(int argc, char *argv[]) {
   int a = 123;
+  passByRef(&a);
   int ret = 0;
 
   ret += foo(a);

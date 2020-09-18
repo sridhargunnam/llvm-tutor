@@ -1,3 +1,9 @@
+# clion extra dirs
+.idea/**
+build/**
+build2/**
+cmake-build-debug/**
+
 # Prerequisites
 *.d
 
